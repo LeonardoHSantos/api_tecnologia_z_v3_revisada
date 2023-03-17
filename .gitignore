@@ -1,0 +1,8 @@
+base
+config_auth.py
+testes.py
+credenciais.txt
+teste.py
+__pycache__
+logs_api.log
+logs_api.text
