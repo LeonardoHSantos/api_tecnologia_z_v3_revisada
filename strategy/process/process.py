@@ -302,36 +302,36 @@ def process_strategy_v3(df, active_name, padrao, version, status_alert):
         list_obs = []
         for current_id in df.index:
             try:
-                if current_id == 3:
-                    id_3 = current_id -3
-                    id_2 = current_id -2
-                    id_1 = current_id -1
+                if current_id == 2:
+                    id_3 = current_id -2
+                    id_2 = current_id -1
+                    id_1 = current_id -0
                     if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
-                        if df["status_close"][current_id] == "baixa":
-                            confluencia_1 = "yes"
+                        # if df["status_close"][current_id] == "baixa":
+                        confluencia_1 = "yes"
                     elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
-                        if df["status_close"][current_id] == "alta":
-                            confluencia_1 = "yes"
-                elif current_id == 6:
-                    id_3 = current_id -3
-                    id_2 = current_id -2
-                    id_1 = current_id -1
+                        # if df["status_close"][current_id] == "alta":
+                        confluencia_1 = "yes"
+                elif current_id == 5:
+                    id_3 = current_id -2
+                    id_2 = current_id -1
+                    id_1 = current_id -0
                     if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
-                        if df["status_close"][current_id] == "baixa":
-                            confluencia_2 = "yes" 
+                        # if df["status_close"][current_id] == "baixa":
+                        confluencia_2 = "yes" 
                     elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
-                        if df["status_close"][current_id] == "alta":
-                            confluencia_2 = "yes"
-                elif current_id == 9:
-                    id_3 = current_id -3
-                    id_2 = current_id -2
-                    id_1 = current_id -1
+                        # if df["status_close"][current_id] == "alta":
+                        confluencia_2 = "yes"
+                elif current_id == 8:
+                    id_3 = current_id -2
+                    id_2 = current_id -1
+                    id_1 = current_id -0
                     if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
-                        if df["status_close"][current_id] == "baixa":
-                            confluencia_3 = "yes"
+                        # if df["status_close"][current_id] == "baixa":
+                        confluencia_3 = "yes"
                     elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
-                        if df["status_close"][current_id] == "alta":
-                            confluencia_3 = "yes"
+                        # if df["status_close"][current_id] == "alta":
+                        confluencia_3 = "yes"
                 # --------------
                 if confluencia_1 == "no" and confluencia_2 == "no" and confluencia_3 == "no":
                     if current_id == 11:
