@@ -22,6 +22,7 @@ def insert_to_database(obj_to_database):
             name_strategy               = obj_to_database["name_strategy"]
             mercado                     = obj_to_database["mercado"]
             alert_time_update           = obj_to_database["alert_time_update"]
+            obs_analysis                = obj_to_database["obs_analysis"]
 
             # ############################################# temporário
             # direction = "call"
@@ -53,9 +54,9 @@ def insert_to_database(obj_to_database):
                     try:
                         comando_insert = f'''
                         INSERT INTO {config_auth.TABLE_NAME_M5}
-                        (open_time, active, direction, resultado, padrao, alert_datetime, expiration_alert, expiration_alert_timestamp, status_alert, name_strategy, mercado, alert_time_update)
+                        (open_time, active, direction, resultado, padrao, alert_datetime, expiration_alert, expiration_alert_timestamp, status_alert, name_strategy, mercado, alert_time_update, obs_analysis)
                         VALUES
-                        ("{open_time}", "{active}", "{direction}", "{resultado}", "{padrao}", "{alert_datetime}", "{expiration_alert}", "{expiration_alert_timestamp}", "{status_alert}", "{name_strategy}", "{mercado}", "{alert_time_update}")
+                        ("{open_time}", "{active}", "{direction}", "{resultado}", "{padrao}", "{alert_datetime}", "{expiration_alert}", "{expiration_alert_timestamp}", "{status_alert}", "{name_strategy}", "{mercado}", "{alert_time_update}", "{obs_analysis}")
                         '''
                         print(comando_insert)
                         cursor.execute(comando_insert)

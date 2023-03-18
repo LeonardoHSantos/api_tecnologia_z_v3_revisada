@@ -250,31 +250,32 @@ def process_strategy_v2(df, active_name, padrao, version, status_alert):
         direction = "-"
         for current_id in df.index:
             try:
+                if current_id == 11:
                 
-                id_6 = current_id -5
-                id_5 = current_id -4
-                id_4 = current_id -3
-                id_3 = current_id -2
-                id_2 = current_id -1
-                id_1 = current_id -0
+                    id_6 = current_id -5
+                    id_5 = current_id -4
+                    id_4 = current_id -3
+                    id_3 = current_id -2
+                    id_2 = current_id -1
+                    id_1 = current_id -0
 
+                    if df["status_close"][id_6] == "baixa" and df["status_close"][id_5] == "alta" and df["status_close"][id_4] == "baixa" and df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
+                        if df["sup_res"][id_1] != "-":
+                            direction = "call"
+                            list_signs.append(direction)
+                        else:
+                            list_signs.append("call - sem confluencia")
 
-                if df["status_close"][id_6] == "baixa" and df["status_close"][id_5] == "alta" and df["status_close"][id_4] == "baixa" and df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
-                    if df["sup_res"][id_1] != "-":
-                        direction = "call"
-                        list_signs.append(direction)
+                    elif df["status_close"][id_6] == "alta" and df["status_close"][id_5] == "baixa" and df["status_close"][id_4] == "alta" and df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
+                        if df["sup_res"][id_1] != "-":
+                            direction = "put"
+                            list_signs.append(direction)
+                        else:
+                            list_signs.append("put - sem confluencia")
                     else:
-                        list_signs.append("call - sem confluencia")
-
-                elif df["status_close"][id_6] == "alta" and df["status_close"][id_5] == "baixa" and df["status_close"][id_4] == "alta" and df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
-                    if df["sup_res"][id_1] != "-":
-                        direction = "put"
-                        list_signs.append(direction)
-                    else:
-                        list_signs.append("put - sem confluencia")
+                        list_signs.append("-")
                 else:
-                    list_signs.append("-")
-             
+                        list_signs.append("-")
             except Exception as e:
                 print(f"Erro 2: {e}")
                 list_signs.append("---")
@@ -294,40 +295,88 @@ def process_strategy_v3(df, active_name, padrao, version, status_alert):
     try:
         list_signs = []
         direction = "-"
+
+        confluencia_1 = "no"
+        confluencia_2 = "no"
+        confluencia_3 = "no"
+        list_obs = []
         for current_id in df.index:
             try:
-                
-                if current_id == 5:
+                if current_id == 2:
                     id_3 = current_id -2
                     id_2 = current_id -1
                     id_1 = current_id -0
-
                     if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
                         if df["sup_res"][id_1] != "-":
-                            direction = "put"
-                            list_signs.append(direction)
-                        else:
-                            list_signs.append("put - sem confluencia")
-
+                            confluencia_1 = "yes"    
                     elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
                         if df["sup_res"][id_1] != "-":
-                            direction = "call"
-                            list_signs.append(direction)
+                            confluencia_1 = "yes"
+                elif current_id == 5:
+                    id_3 = current_id -2
+                    id_2 = current_id -1
+                    id_1 = current_id -0
+                    if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
+                        if df["sup_res"][id_1] != "-":
+                            confluencia_2 = "yes"    
+                    elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
+                        if df["sup_res"][id_1] != "-":
+                            confluencia_2 = "yes"
+                elif current_id == 8:
+                    id_3 = current_id -2
+                    id_2 = current_id -1
+                    id_1 = current_id -0
+                    if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
+                        if df["sup_res"][id_1] != "-":
+                            confluencia_3 = "yes"    
+                    elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
+                        if df["sup_res"][id_1] != "-":
+                            confluencia_3 = "yes"
+                # --------------
+                if confluencia_1 == "no" and confluencia_2 == "no" and confluencia_3 == "no":
+                    if current_id == 11:
+                        id_3 = current_id -2
+                        id_2 = current_id -1
+                        id_1 = current_id -0
+
+                        if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
+                            if df["sup_res"][id_1] != "-":
+                                direction = "put"
+                                list_signs.append(direction)
+                                list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
+                            else:
+                                list_signs.append("put - sem confluencia")
+                                list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
+
+                        elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
+                            if df["sup_res"][id_1] != "-":
+                                direction = "call"
+                                list_signs.append(direction)
+                                list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
+                            else:
+                                list_signs.append("call - sem confluencia")
+                                list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
                         else:
-                            list_signs.append("call - sem confluencia")
+                            list_signs.append("-")
+                            list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
                     else:
                         list_signs.append("-")
+                        list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
                 else:
-                    list_signs.append("-")
-
+                        list_signs.append("-")
+                        list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
+            
             except Exception as e:
                 print(f"Erro 2: {e}")
                 list_signs.append("---")
+                list_obs.append(f"Q1: {confluencia_1} - Q2: {confluencia_2} - Q3: {confluencia_3}")
         
+        obs_analysis = list_obs[len(list_obs)-1]
         df["signs"] = list_signs
+        df["obs_list"] = list_obs
         print(f"DataFrame Finalizado ->> V3")
-        print(df[ ["from", "active_name", "status_close", "tm_frame", "signs", "tt_res", "tt_sup" ] ])
-        prepare_msg_to_database(df, active_name, padrao, version, direction, status_alert)
+        print(df[ ["from", "active_name", "status_close", "tm_frame", "signs", "tt_res", "tt_sup", "obs_list" ] ])
+        prepare_msg_to_database(df, active_name, padrao, version, direction, status_alert, obs_analysis)
 
         return
     except Exception as e:
@@ -382,7 +431,7 @@ def process_strategy_v4(df, active_name, padrao, version, status_alert):
         return False
 
 
-def prepare_msg_to_database(df, active_name, padrao, version, direction, status_alert):
+def prepare_msg_to_database(df, active_name, padrao, version, direction, status_alert, obs_analysis="-"):
     
     max_idx = max(list(df.index))
     expiration_dataframe = df["from"][max_idx]
@@ -411,6 +460,7 @@ def prepare_msg_to_database(df, active_name, padrao, version, direction, status_
         "name_strategy": f"{active_name}-{version}",
         "mercado": mercado,
         "alert_time_update": alert_time_update,
+        "obs_analysis": obs_analysis
     }
     # for i, j in obj_to_database.items():
     #     print(i, j)

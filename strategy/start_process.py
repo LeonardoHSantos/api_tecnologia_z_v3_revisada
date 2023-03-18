@@ -182,8 +182,8 @@ class run_api:
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
                                 list_strategies_process = ["PADRAO-M5-V4"] #["PADRAO-M5-V1", "PADRAO-M5-V4"]
+                                dt_finish = datetime_now(tzone="America/Sao Paulo")
                                 self.check_results(dataframe=dataframe, list_strategies_process=list_strategies_process)
-                                
                                 print(f"Processo CHECK STRATEGIES FINALIZADO - API em andamento | Status da conexão: {self.status_connection}")
 
                         if minute in var_list_minutes.LIST_MINUTES_STRATEGY_V1.keys():
@@ -211,7 +211,6 @@ class run_api:
                         
                         # -------------------------------------
 
-
                         if minute in var_list_minutes.LIST_MINUTES_STRATEGY_V3_CHECK_RESULTS:
                             if second >= 3 and second <= 5:
                                 status_alert = "check-result"
@@ -228,7 +227,7 @@ class run_api:
                             if second >= 16 and second <= 18:
                                 status_alert = var_list_minutes.LIST_MINUTES_STRATEGY_V3[minute]
                                 list_timeframes_sup_res = [60*5, 60*15, 60*60, 60*(60*4)]
-                                list_amounts             = [6, 30, 30, 30]
+                                list_amounts             = [12, 30, 30, 30]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
                                 list_strategies_process = ["PADRAO-M5-V3"] #["PADRAO-M5-V2", "PADRAO-M5-V3"]
@@ -239,7 +238,7 @@ class run_api:
                             if second >= 43 and second <= 45:
                                 status_alert = var_list_minutes.LIST_MINUTES_STRATEGY_V3_10S[minute]
                                 list_timeframes_sup_res = [60*5, 60*15, 60*60, 60*(60*4)]
-                                list_amounts             = [6, 30, 30, 30]
+                                list_amounts             = [12, 30, 30, 30]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
                                 list_strategies_process = ["PADRAO-M5-V3"] #["PADRAO-M5-V2", "PADRAO-M5-V3"]
