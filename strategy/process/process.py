@@ -307,7 +307,7 @@ def process_strategy_v3(df, active_name, padrao, version, status_alert):
                     id_2 = current_id -2
                     id_1 = current_id -1
                     if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
-                        if df["sup_res"][id_1] != "-" and df["status_close"][current_id] != "baixa":
+                        if df["status_close"][current_id] == "baixa":
                             confluencia_1 = "yes"
                     elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
                         if df["status_close"][current_id] == "alta":
@@ -317,7 +317,7 @@ def process_strategy_v3(df, active_name, padrao, version, status_alert):
                     id_2 = current_id -2
                     id_1 = current_id -1
                     if df["status_close"][id_3] == "baixa" and df["status_close"][id_2] == "alta" and df["status_close"][id_1] == "alta":
-                        if df["status_close"][id_3] == "baixa":
+                        if df["status_close"][current_id] == "baixa":
                             confluencia_2 = "yes" 
                     elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
                         if df["status_close"][current_id] == "alta":
@@ -332,7 +332,6 @@ def process_strategy_v3(df, active_name, padrao, version, status_alert):
                     elif df["status_close"][id_3] == "alta" and df["status_close"][id_2] == "baixa" and df["status_close"][id_1] == "baixa":
                         if df["status_close"][current_id] == "alta":
                             confluencia_3 = "yes"
-                
                 # --------------
                 if confluencia_1 == "no" and confluencia_2 == "no" and confluencia_3 == "no":
                     if current_id == 11:
