@@ -11,7 +11,7 @@ PARIDADES = {
     # 'EURUSD': 1,
 	# 'EURGBP': 2,
 	# 'GBPJPY': 3,
-	'EURJPY': 4,
+	# 'EURJPY': 4,
     
 	# 'GBPUSD': 5,
 	
@@ -22,7 +22,7 @@ PARIDADES = {
 	# 'EURUSD-OTC': 76,
 	# 'EURGBP-OTC': 77,
 	# 'USDCHF-OTC': 78,
-	'EURJPY-OTC': 79,
+	# 'EURJPY-OTC': 79,
 	# 'NZDUSD-OTC': 80,
 
 	# 'GBPUSD-OTC': 81,
