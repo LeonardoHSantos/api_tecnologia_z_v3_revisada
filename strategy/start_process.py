@@ -181,7 +181,7 @@ class run_api:
                                 list_amounts             = [2, 1, 1, 1]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
-                                list_strategies_process = ["PADRAO-M5-V4"] #["PADRAO-M5-V1", "PADRAO-M5-V4"]
+                                list_strategies_process = ["PADRAO-M5-V1", "PADRAO-M5-V4"] # ["PADRAO-M5-V4"] 
                                 dt_finish = datetime_now(tzone="America/Sao Paulo")
                                 self.check_results(dataframe=dataframe, list_strategies_process=list_strategies_process)
                                 print(f"Processo CHECK STRATEGIES FINALIZADO - API em andamento | Status da conexão: {self.status_connection}")
@@ -193,7 +193,7 @@ class run_api:
                                 list_amounts                = [7, 30, 30, 30]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
-                                list_strategies_process = ["PADRAO-M5-V4"] #["PADRAO-M5-V1", "PADRAO-M5-V4"]
+                                list_strategies_process = ["PADRAO-M5-V1", "PADRAO-M5-V4"] #["PADRAO-M5-V4"] 
                                 process_pre_analysis(dataframe=dataframe, list_strategies_process=list_strategies_process, status_alert=status_alert)
                                 print(f"Processo em andamento | Status da conexão: {self.status_connection}") 
 
@@ -204,7 +204,7 @@ class run_api:
                                 list_amounts                = [7, 30, 30, 30]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
-                                list_strategies_process = ["PADRAO-M5-V4"] #["PADRAO-M5-V1", "PADRAO-M5-V4"]
+                                list_strategies_process = ["PADRAO-M5-V1", "PADRAO-M5-V4"] #["PADRAO-M5-V4"]
                                 process_pre_analysis(dataframe=dataframe, list_strategies_process=list_strategies_process, status_alert=status_alert)
                                 print(f"Processo em andamento | Status da conexão: {self.status_connection}")            
                         
@@ -218,7 +218,7 @@ class run_api:
                                 list_amounts             = [2, 1, 1, 1]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
-                                list_strategies_process = ["PADRAO-M5-V3"] #["PADRAO-M5-V2", "PADRAO-M5-V3"]
+                                list_strategies_process = ["PADRAO-M5-V2", "PADRAO-M5-V3"] #["PADRAO-M5-V3"]
                                 self.check_results(dataframe=dataframe, list_strategies_process=list_strategies_process)
                                 
                                 print(f"Processo CHECK STRATEGIES FINALIZADO - API em andamento | Status da conexão: {self.status_connection}")
@@ -230,7 +230,7 @@ class run_api:
                                 list_amounts             = [12, 30, 30, 30]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
-                                list_strategies_process = ["PADRAO-M5-V3"] #["PADRAO-M5-V2", "PADRAO-M5-V3"]
+                                list_strategies_process = ["PADRAO-M5-V2", "PADRAO-M5-V3"] #["PADRAO-M5-V3"]
                                 process_pre_analysis(dataframe=dataframe, list_strategies_process=list_strategies_process, status_alert=status_alert)
                                 print(f"Processo em andamento | Status da conexão: {self.status_connection}")
                         
@@ -241,7 +241,7 @@ class run_api:
                                 list_amounts             = [12, 30, 30, 30]
                                 dataframe = self.get_candles(obj_actives, tt_loop, list_timeframes_sup_res, list_amounts, option)
                                 dataframe.index = list(range(0, len(dataframe["id"])))
-                                list_strategies_process = ["PADRAO-M5-V3"] #["PADRAO-M5-V2", "PADRAO-M5-V3"]
+                                list_strategies_process = ["PADRAO-M5-V2", "PADRAO-M5-V3"] #["PADRAO-M5-V3"]
                                 process_pre_analysis(dataframe=dataframe, list_strategies_process=list_strategies_process, status_alert=status_alert)
                                 print(f"Processo em andamento | Status da conexão: {self.status_connection}") 
 
