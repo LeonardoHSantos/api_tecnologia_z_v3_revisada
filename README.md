@@ -1,5 +1,3 @@
-# api_tecnologia_z_v3_revisada
-
 Api desenvolvida para empresa Tecnologia Z.
 
 Objetivo principal é a conexão websocket Fulltime com a corretora IQ Option, coletar de dados, processar os dados com cálculos estatísticos e catalogação de acordo com a necessidade do cliente e enviar sinais de abertura e fechamento de preços ao banco de dados.
